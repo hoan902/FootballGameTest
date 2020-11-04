@@ -18,6 +18,13 @@ public class BallScript : MonoBehaviour
             if (gameObject.transform.parent.CompareTag("Player1"))
             {
                 gameObject.transform.parent.tag = "PlayerWithBall";
+                GameObject troopMeshObj = gameObject.transform.parent.Find("Ch44").gameObject;
+                SkinnedMeshRenderer troopMeshRender = troopMeshObj.GetComponent<SkinnedMeshRenderer>();
+                Material[] troopMats = troopMeshRender.materials;
+                foreach (Material troopMat in troopMats)
+                {
+                    troopMat.SetColor("_Color", Color.green);
+                }
             }
         }
         else if (UIGameScript.instance.RoleP1 == "(Defender)")
@@ -25,6 +32,13 @@ public class BallScript : MonoBehaviour
             if (gameObject.transform.parent.CompareTag("Player2"))
             {
                 gameObject.transform.parent.tag = "PlayerWithBall";
+                GameObject troopMeshObj = gameObject.transform.parent.Find("Ch44").gameObject;
+                SkinnedMeshRenderer troopMeshRender = troopMeshObj.GetComponent<SkinnedMeshRenderer>();
+                Material[] troopMats = troopMeshRender.materials;
+                foreach (Material troopMat in troopMats)
+                {
+                    troopMat.SetColor("_Color", Color.green);
+                }
             }
         }
             
@@ -48,13 +62,11 @@ public class BallScript : MonoBehaviour
                     {
                         troopMat.SetColor("_Color", Color.green);
                     }
-                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, collision.gameObject.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
                 }
                 GetComponent<SphereCollider>().isTrigger = true;
             }else if (collision.gameObject.tag == "Deactivated")
             {
                 gameObject.transform.parent = null;
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, collision.gameObject.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
             }
             
         }else if (UIGameScript.instance.RoleP1 == "(Defender)")
@@ -73,14 +85,12 @@ public class BallScript : MonoBehaviour
                     {
                         troopMat.SetColor("_Color", Color.green);
                     }
-                    gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, collision.gameObject.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
                 }
                 GetComponent<SphereCollider>().isTrigger = true;
             }
             else if (collision.gameObject.tag == "Deactivated")
             {
                 gameObject.transform.parent = null;
-                gameObject.transform.position = Vector3.MoveTowards(gameObject.transform.position, collision.gameObject.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
             }
         }
     }

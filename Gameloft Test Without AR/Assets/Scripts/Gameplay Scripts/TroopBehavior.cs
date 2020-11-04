@@ -221,7 +221,7 @@ public class TroopBehavior : MonoBehaviour
                 {
                     Debug.Log("now stop atk");
                     gameObject.tag = "Deactivated";
-                    troopAgent.enabled = false;
+                    troopAgent.isStopped = true;
                     gameObject.transform.position = transform.position;
                     foreach (GameObject p1Troop in P1Troops)
                     {
@@ -236,16 +236,25 @@ public class TroopBehavior : MonoBehaviour
                         if (p1Troop.CompareTag(p1Tag))
                         {
                             //p1Troop.transform.position = gameObject.transform.Find("BallGrabPoint").position;
+                            Ball.transform.parent = p1Troop.transform;
                             Ball.transform.position = Vector3.MoveTowards(Ball.transform.position, p1Troop.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
+                            p1Troop.tag = playerHoldBallTag;
+                            ballCollider.isTrigger = true;
+                            GameObject troopMeshObjToward = gameObject.transform.Find("Ch44").gameObject;
+                            SkinnedMeshRenderer troopMeshRenderToward = troopMeshObjToward.GetComponent<SkinnedMeshRenderer>();
+                            Material[] troopMatsToward = troopMeshRenderToward.materials;
+                            foreach (Material troopMatToward in troopMatsToward)
+                            {
+                                troopMatToward.SetColor("_Color", Color.green);
+                            }
                         }
                     }
 
 
                     yield return new WaitForSeconds(2.5f);
 
-                    troopAgent.enabled = true;
+                    troopAgent.isStopped = true;
                     GameObject troopMeshObj = gameObject.transform.Find("Ch44").gameObject;
-
                     SkinnedMeshRenderer troopMeshRender = troopMeshObj.GetComponent<SkinnedMeshRenderer>();
                     Material[] troopMats = troopMeshRender.materials;
                     foreach (Material troopMat in troopMats)
@@ -338,7 +347,7 @@ public class TroopBehavior : MonoBehaviour
                 {
                     MeshCollider AtkTroopCol = GetComponent<MeshCollider>();
                     AtkTroopCol.isTrigger = true;
-                    troopAgent.SetDestination(new Vector3(transform.position.x, transform.position.y, -9));
+                    troopAgent.SetDestination(new Vector3(transform.position.x, transform.position.y, -9f));
                     troopAgent.speed = atkNormalSpeed;
                     if (transform.position == troopAgent.destination)
                     {
@@ -387,8 +396,18 @@ public class TroopBehavior : MonoBehaviour
                         //ballAgent.speed = 15f;
                         if (p2Troop.CompareTag(p2Tag))
                         {
+                            Ball.transform.parent = p2Troop.transform;
                             //p1Troop.transform.position = gameObject.transform.Find("BallGrabPoint").position;
                             Ball.transform.position = Vector3.MoveTowards(Ball.transform.position, p2Troop.transform.Find("BallGrabPoint").position, 1.5f * Time.realtimeSinceStartup);
+                            p2Troop.tag = playerHoldBallTag;
+                            ballCollider.isTrigger = true;
+                            GameObject troopMeshObjToward = gameObject.transform.Find("Ch44").gameObject;
+                            SkinnedMeshRenderer troopMeshRenderToward = troopMeshObjToward.GetComponent<SkinnedMeshRenderer>();
+                            Material[] troopMatsToward = troopMeshRenderToward.materials;
+                            foreach (Material troopMatToward in troopMatsToward)
+                            {
+                                troopMatToward.SetColor("_Color", Color.green);
+                            }
                         }
                     }
 
@@ -401,9 +420,9 @@ public class TroopBehavior : MonoBehaviour
                     Material[] troopMats = troopMeshRender.materials;
                     foreach (Material troopMat in troopMats)
                     {
-                        troopMat.SetColor("_Color", Color.blue);
+                        troopMat.SetColor("_Color", Color.red);
                     }
-                    gameObject.tag = p1Tag;
+                    gameObject.tag = p2Tag;
                     Debug.Log("now active atk");
                     troopAgent.isStopped = false;
                     isDeactivated = false;

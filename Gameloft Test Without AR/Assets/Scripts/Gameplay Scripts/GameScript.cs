@@ -54,10 +54,5 @@ public class GameScript : MonoBehaviour
         m_spawned = true;
     }
 
-    //when math end, reset m_spawned to false (not code yet)
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        
-    }
+    
 }
