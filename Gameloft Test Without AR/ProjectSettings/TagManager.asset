@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - PlayerZone
+  - Player2Zone
+  - Player1
+  - Player2
+  - Ball
+  - PlayerWithBall
+  - Player2Goal
+  - PlayerGoal
+  - Deactivated
+  - P2Fence
+  - P1Fence
+  - TroopMeshRender
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - PostProcessing
+  - Screen Space
+  - Atker
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: AtkerSort
+    uniqueID: 1349314537
+    locked: 0
