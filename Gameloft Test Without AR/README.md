@@ -2,7 +2,7 @@
 
 
 
-Using AR samples attempt to applied AR Refference to the game, but since the game have not completed yet, Didn't applied AR into game.
+# Using AR samples attempt to applied AR Refference to the game, but since the game have not completed yet, Didn't applied AR into game.
 
 
 
