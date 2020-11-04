@@ -1,5 +1,13 @@
 # AR Foundation Samples
 
+
+
+Using AR samples attempt to applied AR Refference to the game, but since the game have not completed yet, Didn't applied AR into game.
+
+
+
+
+
 Example projects that use [*AR Foundation 3.0*](https://docs.unity3d.com/Packages/com.unity.xr.arfoundation@3.0/manual/index.html) and demonstrate its functionality with sample assets and components.
 
 This set of samples relies on five Unity packages:
